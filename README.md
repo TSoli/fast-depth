@@ -1,7 +1,9 @@
 # FastDepth ROS2
 
 This repo contains a ROS2 wrapper for
-[FastDepth](https://github.com/dwofk/fast-depth).
+[FastDepth](https://github.com/dwofk/fast-depth) which is a deep learning model
+that performs depth estimation from monocular images. This model is very fast
+and can effectively turn a normal camera into an RGB-D camera.
 
 ## Setup Instructions
 
@@ -53,6 +55,8 @@ You can view the depth video by running
 ros2 run fast_depth viewer
 ```
 
+To close the viewer and kill the node, simply press `q`.
+
 ## Published/Subscribed Topics
 
 | Topic          | Message Type       | Pub/Sub |
@@ -61,7 +65,7 @@ ros2 run fast_depth viewer
 | `camera/depth` | `sensor_msg/Image` | Pub     |
 
 Note depth images are resized back to the original resolution that they were
-published at.
+published at and contain 32 bit floats representing the depth in m.
 
 # Original README
 
