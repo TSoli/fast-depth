@@ -41,6 +41,9 @@ class FastDepthNode(Node):
         depth = self.model(input)
         depth_img = depth.squeeze().detach().cpu().numpy()
         depth_img = cv2.resize(depth_img, (w, h))
+        self.get_logger().info(
+            f"min: {np.min(depth_img):.3f}, max: {np.max(depth_img):.3f}"
+        )
 
         depth_msg = self.cv_bridge.cv2_to_imgmsg(
             depth_img, header=msg.header, encoding="passthrough"
